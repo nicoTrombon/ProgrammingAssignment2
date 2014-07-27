@@ -2,11 +2,18 @@
 # that can cache its inverse and a function that 
 # returns the inverse of the matrix, looking up
 # for the cached inverse when available.j
+
 # The code assumes the input for makeCacheMatrix
 # is an invertible matrix
 
+# The special "matrix" is really a list containing
+# functions to:
+# 1: 'set': set the matrix value, eg: <specialMatName>$set(matrix(1:4,2,2))
+# 2: 'get': get the matrix value, eg: <specialMatName>$get()
+# 3: 'setInv': sets the value of the matrix Inverse in memory
+# 4: 'getInv': gets the value of the precalculated matrix inverse
 
-
+##makeCacheMatrix()
 ## This function creates a special "matrix" object 
 ## that can cache its inverse
 
@@ -26,6 +33,7 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
+##cacheSolve()
 # This function computes the inverse of the special
 # "matrix" returned by `makeCacheMatrix` above. If the inverse has
 # already been calculated (and the matrix has not changed), then
